@@ -34,7 +34,7 @@ export class ContactsComponent implements OnInit {
     firstName: 'Jack', lastName: 'ichan',
     email: 'jack.ichan@fbi.com'
   } ];
-  
+
 
   ngOnInit(): void {
   }
