@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Contact} from "./Contact";
 
 @Component({
   selector: 'cnt-contact',
   template: `
-    <p>
-      contact works!
-    </p>
+    <li>{{ contact.firstName | titlecase}} {{ contact.lastName| uppercase}} - {{ contact.email | lowercase}}</li>
   `,
   styles: [
   ]
 })
 export class ContactComponent implements OnInit {
+  @Input() contact:Contact;
 
   constructor() { }
 

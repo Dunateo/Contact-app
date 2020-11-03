@@ -7,19 +7,14 @@ import {Contact} from "./Contact";
       <h4>Nb Contact: {{ numberOfContacts }}</h4>
       <form>
         <ul>
+          <cnt-contact [contact]="contact"></cnt-contact>
+          <cnt-contact [contact]="contact2"></cnt-contact>
+          <cnt-contact [contact]="contact3"></cnt-contact>
           <li>{{ contact.firstName | titlecase}} {{ contact.lastName| uppercase}} - {{ contact.email | lowercase}}
             <input type="radio" id="contact" name="drone" value="huey" >
           </li>
-          <li>{{ contact2.firstName | titlecase}} {{ contact2.lastName| uppercase}} - {{ contact2.email | lowercase}}
-            <input type="radio" id="contact2" name="drone" value="huey" >
-          </li>
-          <li>{{ contact3.firstName | titlecase}} {{ contact3.lastName| uppercase}} - {{ contact3.email | lowercase}}
-            <input type="radio" id="contact3" name="drone" value="huey" >
-          </li>
         </ul>
       </form>
-      
-      <cnt-contact></cnt-contact>
     
      
   `,
