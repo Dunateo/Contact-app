@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
         <li>{{ contact2.firstName }} {{ contact2.lastName}} - {{ contact2.email }}</li>
         <li>{{ contact3.firstName }} {{ contact3.lastName}} - {{ contact3.email }}</li>
       </ul>
+      <cnt-contact></cnt-contact>
     
      
   `,

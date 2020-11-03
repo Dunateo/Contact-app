@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ContactsComponent } from './contacts.component';
+import { ContactComponent } from './contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContactsComponent
+    ContactsComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule
