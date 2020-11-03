@@ -4,7 +4,8 @@ import {Contact} from "./Contact";
 @Component({
   selector: 'cnt-contact',
   template: `
-    <li>{{ contact.firstName | titlecase}} {{ contact.lastName| uppercase}} - {{ contact.email | lowercase}}</li>
+    <li>{{ contact.firstName | titlecase}} {{ contact.lastName| uppercase}} - {{ contact.email | lowercase}}
+      <input type="radio" id="contact" name="drone" value="{{ contact.id}}" ></li>
   `,
   styles: [
   ]

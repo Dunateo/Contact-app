@@ -10,9 +10,6 @@ import {Contact} from "./Contact";
           <cnt-contact [contact]="contact"></cnt-contact>
           <cnt-contact [contact]="contact2"></cnt-contact>
           <cnt-contact [contact]="contact3"></cnt-contact>
-          <li>{{ contact.firstName | titlecase}} {{ contact.lastName| uppercase}} - {{ contact.email | lowercase}}
-            <input type="radio" id="contact" name="drone" value="huey" >
-          </li>
         </ul>
       </form>
     
