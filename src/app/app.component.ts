@@ -8,11 +8,12 @@ import { Component } from '@angular/core';
       <h1>
         Welcome to {{title}}!
       </h1>
+      <h2>on est sur la page d'acceuil la </h2>
     </div>
     
   `,
   styles: []
 })
 export class AppComponent {
-  title = 'contacts-app';
+  title = 'Contacts';
 }
