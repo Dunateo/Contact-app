@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Contact} from "./Contact";
 
 @Component({
   selector: 'cnt-contacts',
@@ -29,15 +30,18 @@ export class ContactsComponent implements OnInit {
 
   constructor() { }
   numberOfContacts = 3;
-  contact = {
+  contact:Contact = {
+    id:0,
     firstName: 'Jack', lastName: 'Bauer',
     email: 'jack.bauer@fbi.com'
   };
-  contact2 = {
+  contact2:Contact = {
+    id:1,
     firstName: 'Jack', lastName: 'lang',
     email: 'jack.lang@fbi.com'
   };
-  contact3 = {
+  contact3:Contact = {
+    id:2,
     firstName: 'Jack', lastName: 'ichan',
     email: 'jack.ichan@fbi.com'
   };
