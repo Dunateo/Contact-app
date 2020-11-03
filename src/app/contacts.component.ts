@@ -5,9 +5,9 @@ import { Component, OnInit } from '@angular/core';
   template: `
       <h4>{{ numberOfContacts }}</h4>
       <ul>
-        <li>{{ contact.firstName }} {{ contact.lastName}} - {{ contact.email }}</li>
-        <li>{{ contact2.firstName }} {{ contact2.lastName}} - {{ contact2.email }}</li>
-        <li>{{ contact3.firstName }} {{ contact3.lastName}} - {{ contact3.email }}</li>
+        <li>{{ contact.firstName | titlecase}} {{ contact.lastName| uppercase}} - {{ contact.email | lowercase}}</li>
+        <li>{{ contact2.firstName | titlecase}} {{ contact2.lastName| uppercase}} - {{ contact2.email | lowercase}}</li>
+        <li>{{ contact3.firstName | titlecase}} {{ contact3.lastName| uppercase}} - {{ contact3.email | lowercase}}</li>
       </ul>
       <cnt-contact></cnt-contact>
     
