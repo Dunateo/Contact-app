@@ -4,7 +4,7 @@ import {Contact} from "./Contact";
 @Component({
   selector: 'cnt-contacts',
   template: `
-      <h4>{{ numberOfContacts }}</h4>
+      <h4>Nb Contact: {{ numberOfContacts }}</h4>
       <form>
         <ul>
           <li>{{ contact.firstName | titlecase}} {{ contact.lastName| uppercase}} - {{ contact.email | lowercase}}
@@ -29,6 +29,7 @@ import {Contact} from "./Contact";
 export class ContactsComponent implements OnInit {
 
   constructor() { }
+
   numberOfContacts = 3;
   contact:Contact = {
     id:0,
