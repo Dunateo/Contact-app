@@ -9,7 +9,8 @@ import { Component } from '@angular/core';
         Welcome to {{title}}!
       </h1>
       <h2>on est sur la page d'acceuil la </h2>
-      <cnt-contacts></cnt-contacts>
+        <cnt-contacts>Jack</cnt-contacts>
+      
     </div>
     
   `,
