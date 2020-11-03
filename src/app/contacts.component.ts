@@ -4,11 +4,20 @@ import { Component, OnInit } from '@angular/core';
   selector: 'cnt-contacts',
   template: `
       <h4>{{ numberOfContacts }}</h4>
-      <ul>
-        <li>{{ contact.firstName | titlecase}} {{ contact.lastName| uppercase}} - {{ contact.email | lowercase}}</li>
-        <li>{{ contact2.firstName | titlecase}} {{ contact2.lastName| uppercase}} - {{ contact2.email | lowercase}}</li>
-        <li>{{ contact3.firstName | titlecase}} {{ contact3.lastName| uppercase}} - {{ contact3.email | lowercase}}</li>
-      </ul>
+      <form>
+        <ul>
+          <li>{{ contact.firstName | titlecase}} {{ contact.lastName| uppercase}} - {{ contact.email | lowercase}}
+            <input type="radio" id="contact" name="drone" value="huey" >
+          </li>
+          <li>{{ contact2.firstName | titlecase}} {{ contact2.lastName| uppercase}} - {{ contact2.email | lowercase}}
+            <input type="radio" id="contact2" name="drone" value="huey" >
+          </li>
+          <li>{{ contact3.firstName | titlecase}} {{ contact3.lastName| uppercase}} - {{ contact3.email | lowercase}}
+            <input type="radio" id="contact3" name="drone" value="huey" >
+          </li>
+        </ul>
+      </form>
+      
       <cnt-contact></cnt-contact>
     
      
