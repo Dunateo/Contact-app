@@ -12,6 +12,7 @@ import {Contact} from "./Contact";
           *ngIf="!!selected"
           [contact]="contact"
       ></cnt-contact-detail>
+      <br>
     </li>
   `,
   styles: [

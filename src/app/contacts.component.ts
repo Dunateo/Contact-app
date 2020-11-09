@@ -4,6 +4,20 @@ import {Contact} from "./Contact";
 @Component({
   selector: 'cnt-contacts',
   template: `
+      <form>
+        <label for="first">Firstname</label>
+        <input id="first" type="text">
+        
+        <label for="last">Lastname</label>
+        <input id="last" type="text">
+        
+        <label for="mail">Email</label>
+        <input id="mail" type="email">
+        <button>Add</button>
+      </form>
+      
+      <button>Edit</button>
+      <button (click)="deleteContact()">Delete</button>
       <h4>Nb Contact: {{ numberOfContacts }}</h4>
         <ul>
           <cnt-contact  
@@ -44,7 +58,17 @@ export class ContactsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  deleteContact(){
+    let id:number;
+    for (let i = 0; i<this.numberOfContacts; i++){
+      if (this.contactArray[i].id === this.selectedContact.id){
+        this.contactArray.splice(i);
+        this.numberOfContacts = this.numberOfContacts-1;
+        return true;
+      }
+    }
 
+  }
   selectContact(contact:Contact){
     if (this.selectedContact === contact){
       this.selectedContact = null;
