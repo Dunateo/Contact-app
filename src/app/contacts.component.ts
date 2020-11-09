@@ -46,6 +46,11 @@ export class ContactsComponent implements OnInit {
   }
 
   selectContact(contact:Contact){
-    this.selectedContact = contact;
+    if (this.selectedContact === contact){
+      this.selectedContact = null;
+    }else {
+      this.selectedContact = contact;
+    }
+
   }
 }
