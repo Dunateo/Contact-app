@@ -8,6 +8,10 @@ import {Contact} from "./Contact";
       <span [class.selected]="selected">
         {{ contact.firstName | titlecase}} {{ contact.lastName| uppercase}} - {{ contact.email | lowercase}}
       </span>
+      <cnt-contact-detail
+          *ngIf="!!selected"
+          [contact]="contact"
+      ></cnt-contact-detail>
     </li>
   `,
   styles: [
@@ -17,13 +21,11 @@ import {Contact} from "./Contact";
 export class ContactComponent implements OnInit {
   @Input() contact:Contact;
   @Input() selected:boolean;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  display(){
 
-
-  }
 }

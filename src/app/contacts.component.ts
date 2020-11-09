@@ -5,7 +5,6 @@ import {Contact} from "./Contact";
   selector: 'cnt-contacts',
   template: `
       <h4>Nb Contact: {{ numberOfContacts }}</h4>
-      <form>
         <ul>
           <cnt-contact  
                         *ngFor="let contact of contactArray"
@@ -13,7 +12,8 @@ import {Contact} from "./Contact";
                         [contact]="contact"
                         [selected]="selectedContact === contact"></cnt-contact>
         </ul>
-      </form>
+      
+      
     
      
   `,
