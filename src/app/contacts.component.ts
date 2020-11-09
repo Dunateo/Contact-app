@@ -4,23 +4,27 @@ import {Contact} from "./Contact";
 @Component({
   selector: 'cnt-contacts',
   template: `
-      <form>
+      <form (ngSubmit)="closeForm()">
         <label for="first">Firstname</label>
-        <input id="first" type="text" *ngIf="!!selectedContact" [value]="selectedContact.firstName">
+        <input id="first" name="first" type="text"  [(ngModel)]="selectedContact.firstName" 
+               *ngIf="!!selectedContact" [value]="selectedContact.firstName">
         <input id="first" type="text" *ngIf="!selectedContact">
         
         <label for="last">Lastname</label>
-        <input id="last" type="text" *ngIf="!!selectedContact" [value]="selectedContact.lastName">
+        <input id="last" name="last" type="text" [(ngModel)]="selectedContact.lastName" 
+               *ngIf="!!selectedContact" [value]="selectedContact.lastName">
         <input id="last" type="text" *ngIf="!selectedContact" >
         
         <label for="mail">Email</label>
-        <input id="mail" type="email" *ngIf="!!selectedContact" [value]="selectedContact.email">
+        <input id="mail" name="mail" type="email"  [(ngModel)]="selectedContact.email" 
+               *ngIf="!!selectedContact" [value]="selectedContact.email">
         <input id="mail" type="email" *ngIf="!selectedContact">
         <button >Add</button>
       </form>
       
-      <button *ngIf="!!selectedContact">Edit</button>
+      <button *ngIf="!!selectedContact" >Edit</button>
       <button *ngIf="!!selectedContact" (click)="deleteContact()">Delete</button>
+      
       <h4>Nb Contact: {{ numberOfContacts }}</h4>
         <ul>
           <cnt-contact  
@@ -40,10 +44,11 @@ import {Contact} from "./Contact";
 export class ContactsComponent implements OnInit {
 
   selectedContact: Contact =null;
+  editedContact: Contact;
 
   constructor() { }
 
-  numberOfContacts = 3;
+
   contactArray:Contact[] =[{
     id:0,
     firstName: 'Jack', lastName: 'Bauer',
@@ -57,7 +62,7 @@ export class ContactsComponent implements OnInit {
     firstName: 'Jack', lastName: 'ichan',
     email: 'jack.ichan@fbi.com'
   } ];
-
+  numberOfContacts = this.contactArray.length;
 
   ngOnInit(): void {
   }
@@ -79,6 +84,12 @@ export class ContactsComponent implements OnInit {
     }else {
       this.selectedContact = contact;
     }
+  }
+  editContact(contact:Contact){
+    this.editedContact = contact;
+  }
 
+  closeForm() {
+    this.selectedContact = null;
   }
 }

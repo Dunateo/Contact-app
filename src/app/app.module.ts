@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ContactsComponent } from './contacts.component';
 import { ContactComponent } from './contact.component';
 import { ContactDetailComponent } from './contact-detail.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ContactDetailComponent } from './contact-detail.component';
     ContactDetailComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+      FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
