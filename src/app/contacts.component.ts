@@ -8,18 +8,18 @@ import {Contact} from "./Contact";
         <label for="first">Firstname</label>
         <input id="first" name="first" type="text"  [(ngModel)]="selectedContact.firstName" 
                *ngIf="!!selectedContact" [value]="selectedContact.firstName">
-        <input id="first" type="text" *ngIf="!selectedContact">
+        <input id="first" name="first" type="text" [(ngModel)]="addContact.firstName" *ngIf="!selectedContact">
         
         <label for="last">Lastname</label>
         <input id="last" name="last" type="text" [(ngModel)]="selectedContact.lastName" 
                *ngIf="!!selectedContact" [value]="selectedContact.lastName">
-        <input id="last" type="text" *ngIf="!selectedContact" >
+        <input id="last" name="last" type="text" [(ngModel)]="addContact.lastName" *ngIf="!selectedContact" >
         
         <label for="mail">Email</label>
         <input id="mail" name="mail" type="email"  [(ngModel)]="selectedContact.email" 
                *ngIf="!!selectedContact" [value]="selectedContact.email">
-        <input id="mail" type="email" *ngIf="!selectedContact">
-        <button >Add</button>
+        <input id="mail" name="mail" type="email" [(ngModel)]="addContact.email" *ngIf="!selectedContact">
+        <button (click)="addForm()">Add</button>
       </form>
       
       <button *ngIf="!!selectedContact" >Edit</button>
@@ -44,8 +44,12 @@ import {Contact} from "./Contact";
 export class ContactsComponent implements OnInit {
 
   selectedContact: Contact =null;
-  editedContact: Contact;
-
+  addContact: Contact ={
+    id: 0,
+    firstName: '',
+    lastName: '',
+    email: ''
+  };
   constructor() { }
 
 
@@ -85,11 +89,24 @@ export class ContactsComponent implements OnInit {
       this.selectedContact = contact;
     }
   }
-  editContact(contact:Contact){
-    this.editedContact = contact;
-  }
 
   closeForm() {
     this.selectedContact = null;
+    this.addContact = {
+      id: 0,
+      firstName: '',
+      lastName: '',
+      email: ''
+    };
+  }
+
+  addForm() {
+    const newContact:Contact = {
+      id: this.contactArray[this.numberOfContacts-1].id + 1,
+      firstName: this.addContact.firstName,
+      lastName:this.addContact.lastName,
+      email: this.addContact.email
+    };
+    this.contactArray.push(newContact);
   }
 }
