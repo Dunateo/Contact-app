@@ -6,18 +6,21 @@ import {Contact} from "./Contact";
   template: `
       <form>
         <label for="first">Firstname</label>
-        <input id="first" type="text">
+        <input id="first" type="text" *ngIf="!!selectedContact" [value]="selectedContact.firstName">
+        <input id="first" type="text" *ngIf="!selectedContact">
         
         <label for="last">Lastname</label>
-        <input id="last" type="text">
+        <input id="last" type="text" *ngIf="!!selectedContact" [value]="selectedContact.lastName">
+        <input id="last" type="text" *ngIf="!selectedContact" >
         
         <label for="mail">Email</label>
-        <input id="mail" type="email">
-        <button>Add</button>
+        <input id="mail" type="email" *ngIf="!!selectedContact" [value]="selectedContact.email">
+        <input id="mail" type="email" *ngIf="!selectedContact">
+        <button >Add</button>
       </form>
       
-      <button>Edit</button>
-      <button (click)="deleteContact()">Delete</button>
+      <button *ngIf="!!selectedContact">Edit</button>
+      <button *ngIf="!!selectedContact" (click)="deleteContact()">Delete</button>
       <h4>Nb Contact: {{ numberOfContacts }}</h4>
         <ul>
           <cnt-contact  
@@ -36,7 +39,7 @@ import {Contact} from "./Contact";
 })
 export class ContactsComponent implements OnInit {
 
-  selectedContact: Contact;
+  selectedContact: Contact =null;
 
   constructor() { }
 
@@ -58,6 +61,7 @@ export class ContactsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   deleteContact(){
     let id:number;
     for (let i = 0; i<this.numberOfContacts; i++){
