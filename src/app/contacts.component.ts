@@ -107,6 +107,7 @@ export class ContactsComponent implements OnInit {
       lastName:this.addContact.lastName,
       email: this.addContact.email
     };
+    this.numberOfContacts = this.numberOfContacts+1;
     this.contactArray.push(newContact);
   }
 }
