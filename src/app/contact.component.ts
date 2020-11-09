@@ -4,15 +4,19 @@ import {Contact} from "./Contact";
 @Component({
   selector: 'cnt-contact',
   template: `
-    <li>{{ contact.firstName | titlecase}} {{ contact.lastName| uppercase}} - {{ contact.email | lowercase}}
-      <input type="radio" id="contact" name="drone" value="{{ contact.id}}" ></li>
+    <li>
+      <span [class.selected]="selected">
+        {{ contact.firstName | titlecase}} {{ contact.lastName| uppercase}} - {{ contact.email | lowercase}}
+      </span>
+    </li>
   `,
   styles: [
+      'span.selected{background: lightcoral}'
   ]
 })
 export class ContactComponent implements OnInit {
   @Input() contact:Contact;
-
+  @Input() selected:boolean;
   constructor() { }
 
   ngOnInit(): void {

@@ -7,7 +7,11 @@ import {Contact} from "./Contact";
       <h4>Nb Contact: {{ numberOfContacts }}</h4>
       <form>
         <ul>
-          <cnt-contact *ngFor="let contact of contactArray" [contact]="contact"></cnt-contact>
+          <cnt-contact  
+                        *ngFor="let contact of contactArray"
+                        (click)="selectContact(contact)"
+                        [contact]="contact"
+                        [selected]="selectedContact === contact"></cnt-contact>
         </ul>
       </form>
     
@@ -17,6 +21,8 @@ import {Contact} from "./Contact";
   ]
 })
 export class ContactsComponent implements OnInit {
+
+  selectedContact: Contact;
 
   constructor() { }
 
@@ -39,4 +45,7 @@ export class ContactsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  selectContact(contact:Contact){
+    this.selectedContact = contact;
+  }
 }
