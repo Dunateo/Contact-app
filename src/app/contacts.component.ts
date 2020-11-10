@@ -20,11 +20,14 @@ import {ContactsService} from "./contacts.service";
         <input id="mail" name="mail" type="email"  [(ngModel)]="selectedContact.email" 
                *ngIf="!!selectedContact" [value]="selectedContact.email">
         <input id="mail" name="mail" type="email" [(ngModel)]="addContact.email" *ngIf="!selectedContact">
-        <button (click)="addForm()">Add</button>
+        
+        <button (click)="contactArray = contactService.addForm(addContact); 
+        numberOfContacts =contactService.numberOfContacts">Add</button>
       </form>
       
       <button *ngIf="!!selectedContact" >Edit</button>
-      <button *ngIf="!!selectedContact" (click)="deleteContact()">Delete</button>
+      <button *ngIf="!!selectedContact" 
+              (click)="numberOfContacts = contactService.deleteContact(selectedContact)">Delete</button>
       
       <h4>Nb Contact: {{ numberOfContacts }}</h4>
         <ul>
@@ -51,22 +54,12 @@ export class ContactsComponent implements OnInit {
   //definition des variables
   addContact: Contact =this.contactService.videContact;
   contactArray:Contact[] = this.contactService.contactArray;
-  numberOfContacts = this.contactArray.length;
+  numberOfContacts = this.contactService.numberOfContacts;
 
   ngOnInit(): void {
   }
 
-  deleteContact(){
-    let id:number;
-    for (let i = 0; i<this.numberOfContacts; i++){
-      if (this.contactArray[i].id === this.selectedContact.id){
-        this.contactArray.splice(i);
-        this.numberOfContacts = this.numberOfContacts-1;
-        return true;
-      }
-    }
 
-  }
   selectContact(contact:Contact){
     if (this.selectedContact === contact){
       this.selectedContact = null;
@@ -80,14 +73,5 @@ export class ContactsComponent implements OnInit {
     this.addContact = this.contactService.videContact;
   }
 
-  addForm() {
-    const newContact:Contact = {
-      id: this.contactArray[this.numberOfContacts-1].id + 1,
-      firstName: this.addContact.firstName,
-      lastName:this.addContact.lastName,
-      email: this.addContact.email
-    };
-    this.numberOfContacts = this.numberOfContacts+1;
-    this.contactArray.push(newContact);
-  }
+
 }
