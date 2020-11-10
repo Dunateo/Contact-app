@@ -21,14 +21,13 @@ import {ContactsService} from "./contacts.service";
              *ngIf="!!selectedContact" [value]="selectedContact.email">
       <input id="mail" name="mail" type="email" [(ngModel)]="addContact.email" *ngIf="!selectedContact">
 
-      <button (click)="contactArray = contactService.addForm(addContact); 
-        numberOfContacts =contactService.numberOfContacts">Add
+      <button (click)="add()">Add
       </button>
     </form>
 
     <button *ngIf="!!selectedContact">Edit</button>
     <button *ngIf="!!selectedContact"
-            (click)="numberOfContacts =contactService.deleteContact(selectedContact)">Delete
+            (click)="delete()">Delete
     </button>
 
     <h4>Nb Contact: {{ numberOfContacts }}</h4>
@@ -50,7 +49,9 @@ import {ContactsService} from "./contacts.service";
 export class ContactsComponent implements OnInit {
 
   selectedContact: Contact =null;
-  constructor(private contactService: ContactsService) {}
+  constructor(private contactService: ContactsService) {
+
+  }
 
   //definition des variables
   addContact: Contact =this.contactService.videContact;
@@ -60,6 +61,13 @@ export class ContactsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  add(){
+    this.contactArray = this.contactService.addForm(this.addContact);
+    this.numberOfContacts = this.contactService.numberOfContacts
+  }
+  delete(){
+    this.numberOfContacts = this.contactService.deleteContact(this.selectedContact)
+  }
 
   selectContact(contact:Contact){
     if (this.selectedContact === contact){
