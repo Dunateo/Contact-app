@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Contact} from "./Contact";
+import {ContactIdService} from "./contact-id.service";
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class ContactsService {
   };
 
   private _numberOfContacts = this.contactArray.length;
-  constructor() { }
+  constructor(private idService:ContactIdService) { }
 
   deleteContact(currentC:Contact){
     for (let i = 0; i<this._numberOfContacts; i++){
@@ -44,7 +45,7 @@ export class ContactsService {
 
   addForm(newC:Contact) {
     const newContact:Contact = {
-      id: this.contactArray[this.numberOfContacts-1].id + 1,
+      id: this.idService.newId(this.contactArray[this.numberOfContacts-1].id) ,
       firstName: newC.firstName,
       lastName:newC.lastName,
       email: newC.email
