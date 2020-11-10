@@ -28,7 +28,7 @@ import {ContactsService} from "./contacts.service";
 
     <button *ngIf="!!selectedContact">Edit</button>
     <button *ngIf="!!selectedContact"
-            (click)="numberOfContacts = contactService.deleteContact(selectedContact)">Delete
+            (click)="numberOfContacts =contactService.deleteContact(selectedContact)">Delete
     </button>
 
     <h4>Nb Contact: {{ numberOfContacts }}</h4>
@@ -50,10 +50,7 @@ import {ContactsService} from "./contacts.service";
 export class ContactsComponent implements OnInit {
 
   selectedContact: Contact =null;
-  private _contactService:ContactsService;
-  constructor(contactService: ContactsService) {
-    this._contactService = contactService;
-  }
+  constructor(private contactService: ContactsService) {}
 
   //definition des variables
   addContact: Contact =this.contactService.videContact;
@@ -78,7 +75,5 @@ export class ContactsComponent implements OnInit {
   }
 
 
-  get contactService(): ContactsService {
-    return this._contactService;
-  }
+
 }
