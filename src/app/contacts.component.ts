@@ -61,14 +61,17 @@ export class ContactsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //ajout
   add(){
     this.contactArray = this.contactService.addForm(this.addContact);
     this.numberOfContacts = this.contactService.numberOfContacts
   }
+  //suppression
   delete(){
     this.numberOfContacts = this.contactService.deleteContact(this.selectedContact)
   }
 
+  //selection
   selectContact(contact:Contact){
     if (this.selectedContact === contact){
       this.selectedContact = null;
@@ -77,6 +80,7 @@ export class ContactsComponent implements OnInit {
     }
   }
 
+  //fermeture formulaire
   closeForm() {
     this.selectedContact = null;
     this.addContact = this.contactService.videContact;
