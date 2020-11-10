@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Contact} from "./Contact";
+import {ContactsService} from "./contacts.service";
 
 @Component({
   selector: 'cnt-contacts',
@@ -7,7 +8,7 @@ import {Contact} from "./Contact";
       <form (ngSubmit)="closeForm()">
         <label for="first">Firstname</label>
         <input id="first" name="first" type="text"  [(ngModel)]="selectedContact.firstName" 
-               *ngIf="!!selectedContact" [value]="selectedContact.firstName">
+               *ngIf="!!selectedContact" [value]="selectedContact.firstName" >
         <input id="first" name="first" type="text" [(ngModel)]="addContact.firstName" *ngIf="!selectedContact">
         
         <label for="last">Lastname</label>
@@ -44,28 +45,12 @@ import {Contact} from "./Contact";
 export class ContactsComponent implements OnInit {
 
   selectedContact: Contact =null;
-  addContact: Contact ={
-    id: 0,
-    firstName: '',
-    lastName: '',
-    email: ''
-  };
-  constructor() { }
 
+  constructor(private contactService: ContactsService) { }
 
-  contactArray:Contact[] =[{
-    id:0,
-    firstName: 'Jack', lastName: 'Bauer',
-    email: 'jack.bauer@fbi.com'
-  },{
-    id:1,
-    firstName: 'Jack', lastName: 'lang',
-    email: 'jack.lang@fbi.com'
-  },{
-    id:2,
-    firstName: 'Jack', lastName: 'ichan',
-    email: 'jack.ichan@fbi.com'
-  } ];
+  //definition des variables
+  addContact: Contact =this.contactService.videContact;
+  contactArray:Contact[] = this.contactService.contactArray;
   numberOfContacts = this.contactArray.length;
 
   ngOnInit(): void {
@@ -92,12 +77,7 @@ export class ContactsComponent implements OnInit {
 
   closeForm() {
     this.selectedContact = null;
-    this.addContact = {
-      id: 0,
-      firstName: '',
-      lastName: '',
-      email: ''
-    };
+    this.addContact = this.contactService.videContact;
   }
 
   addForm() {
